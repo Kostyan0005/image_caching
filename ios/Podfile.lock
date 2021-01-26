@@ -1,34 +1,57 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_native_image (0.0.1):
+  - flutter_image_compress (0.0.1):
     - Flutter
-  - integration_test (0.0.1):
-    - Flutter
+    - Mantle
+    - SDWebImageWebPCoder
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
+  - Mantle (2.1.6):
+    - Mantle/extobjc (= 2.1.6)
+  - Mantle/extobjc (2.1.6)
   - path_provider (0.0.1):
     - Flutter
+  - SDWebImage/Core (5.10.3)
+  - SDWebImageWebPCoder (0.8.1):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.10)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
-  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - flutter_image_compress (from `.symlinks/plugins/flutter_image_compress/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+
+SPEC REPOS:
+  trunk:
+    - libwebp
+    - Mantle
+    - SDWebImage
+    - SDWebImageWebPCoder
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_native_image:
-    :path: ".symlinks/plugins/flutter_native_image/ios"
-  integration_test:
-    :path: ".symlinks/plugins/integration_test/ios"
+  flutter_image_compress:
+    :path: ".symlinks/plugins/flutter_image_compress/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  flutter_native_image: 9c0b7451838484458e5b0fae007b86a4c2d4bdfe
-  integration_test: 5ed24a436eb7ec17b6a13046e9bf7ca4a404e59e
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_image_compress: 082f8daaf6c1b0c9fe798251c750ef0ecd98d7ae
+  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
+  Mantle: 4c0ed6ce47c96eccc4dc3bb071deb3def0e2c3be
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  SDWebImage: e378178472b735e84b007bfb55514c97948a0598
+  SDWebImageWebPCoder: fac2821bf5a6642a73979d0962dbed5eac45a605
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: 3efef3e4c4241ddf19165efb8229df7447127bfd
 
 COCOAPODS: 1.10.0

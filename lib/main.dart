@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_caching/constants.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,7 +34,7 @@ class ListImage extends StatelessWidget {
       width: width,
       height: width,
       child: FutureBuilder(
-        future: _getCachedImage(index),
+        future: _getCachedImage(index, width.toInt()),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting)
             return Center(
@@ -58,17 +59,24 @@ class ListImage extends StatelessWidget {
     );
   }
 
-  Future<File> _getCachedImage(int index) async {
+  Future<File> _getCachedImage(int index, int minSize) async {
     final temp = await getTemporaryDirectory();
     final imageFile = File('${temp.path}/images/$index');
     if (imageFile.existsSync()) return imageFile; // return if exists
 
     final response = await http.get(kImageUrls[index]);
-    if (response.statusCode == 200)
+    if (response.statusCode == 200) {
+      final compressedImageBytes = await FlutterImageCompress.compressWithList(
+        response.bodyBytes,
+        minHeight: minSize,
+        minWidth: minSize,
+        quality: 70,
+      );
       return imageFile
         ..createSync(recursive: true)
-        ..writeAsBytesSync(response.bodyBytes);
-    else
+        ..writeAsBytesSync(compressedImageBytes);
+    } else {
       throw Exception();
+    }
   }
 }
