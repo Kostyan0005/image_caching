@@ -72,9 +72,9 @@ class ListImage extends StatelessWidget {
         minWidth: minSize,
         quality: 70,
       );
-      return imageFile
-        ..createSync(recursive: true)
-        ..writeAsBytesSync(compressedImageBytes);
+      await imageFile.create(recursive: true);
+      await imageFile.writeAsBytes(compressedImageBytes);
+      return imageFile;
     } else {
       throw Exception();
     }
